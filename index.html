@@ -1,36 +1,325 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portofolio Risa</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portofolio Risa Ariarel - Mahasiswa Teknik Komputer Politeknik Negeri Jember">
+<title>Risa Ariarel — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff;
+  --blush:#fff5f8;
+  --petal:#ffe3ec;
+  --pink:#ff8fb1;
+  --rose:#ff5c8a;
+  --berry:#c2255c;
+  --ink:#4a2b38;
+  --soft:#8a6573;
+  --radius:24px;
+  --shadow:0 12px 30px rgba(255,92,138,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--white);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:'Fredoka',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8px}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;z-index:999;background:var(--blush);display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-box{text-align:center}
+.loader-heart{font-size:3.2rem;display:inline-block;animation:beat 1s ease-in-out infinite}
+.loader-box p{font-family:'Fredoka';color:var(--rose);margin-top:8px}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* ---------- Navbar ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1100px,92%);z-index:100;
+  display:flex;align-items:center;justify-content:space-between;padding:10px 14px 10px 24px;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border:2px solid var(--petal);border-radius:999px;box-shadow:var(--shadow)}
+.logo{font-size:1.4rem;font-weight:700;color:var(--rose)}
+.logo span{display:inline-block;animation:wiggle 2.5s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-14deg)}75%{transform:rotate(14deg)}}
+.menu{display:flex;gap:4px;list-style:none}
+.menu a{display:block;padding:8px 14px;border-radius:999px;font-weight:700;font-size:.92rem;color:var(--soft);transition:.25s}
+.menu a:hover,.menu a.active{background:var(--rose);color:var(--white);transform:translateY(-2px)}
+.burger{display:none;background:var(--petal);border:0;border-radius:50%;width:42px;height:42px;font-size:1.3rem;cursor:pointer}
+
+/* ---------- Layout ---------- */
+section{padding:100px 6% 40px;max-width:1150px;margin:auto;position:relative}
+.title{text-align:center;margin-bottom:44px}
+.title h2{font-size:clamp(1.9rem,4vw,2.6rem);color:var(--berry)}
+.title p{color:var(--soft)}
+.title .squiggle{display:block;width:90px;height:10px;margin:10px auto 0;
+  background:radial-gradient(circle at 5px 5px,var(--pink) 4px,transparent 5px) 0 0/20px 10px repeat-x}
+
+/* ---------- Hero ---------- */
+#beranda{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:120px}
+.hero-bg{position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(circle at 15% 20%,var(--petal),transparent 40%),
+  radial-gradient(circle at 85% 70%,var(--petal),transparent 40%),var(--white)}
+.photo-wrap{position:relative;width:clamp(220px,34vw,320px);aspect-ratio:1;margin-bottom:28px}
+.photo-wrap::before{content:"";position:absolute;inset:-14px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--pink),var(--petal),var(--rose),var(--petal),var(--pink));animation:spin 8s linear infinite}
+.photo-wrap::after{content:"";position:absolute;inset:-6px;border-radius:50%;background:var(--white)}
+.photo{position:relative;z-index:2;width:100%;height:100%;border-radius:50%;object-fit:cover;background:var(--petal);
+  display:grid;place-items:center;font-family:'Fredoka';font-size:5rem;color:var(--rose);animation:float 4s ease-in-out infinite}
+img.photo{display:block}
+.sticker{position:absolute;z-index:3;font-size:2rem;animation:float 3s ease-in-out infinite}
+.s1{top:-6px;right:-4px}.s2{bottom:10px;left:-18px;animation-delay:.8s}.s3{top:30%;left:-34px;animation-delay:1.4s;font-size:1.5rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hello{display:inline-block;background:var(--petal);color:var(--berry);font-weight:700;padding:6px 18px;border-radius:999px;margin-bottom:12px}
+#beranda h1{font-size:clamp(2.4rem,7vw,4.4rem);color:var(--ink)}
+#beranda h1 .name{color:var(--rose);display:inline-block}
+.typed{min-height:2em;font-size:1.15rem;color:var(--soft);margin:10px 0 26px}
+.typed::after{content:"|";color:var(--rose);animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;font-weight:700;font-family:'Fredoka';border:2px solid var(--rose);transition:.3s;cursor:pointer}
+.btn.fill{background:var(--rose);color:var(--white);box-shadow:var(--shadow)}
+.btn.line{color:var(--rose);background:var(--white)}
+.btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 14px 28px rgba(255,92,138,.3)}
+
+/* Falling petals */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.petal{position:absolute;top:-30px;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+/* ---------- Cards ---------- */
+.card{background:var(--white);border:2px solid var(--petal);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:.35s}
+.card:hover{transform:translateY(-8px) rotate(-.6deg);border-color:var(--pink)}
+.about{max-width:760px;margin:auto;text-align:center;font-size:1.1rem}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.chip{background:var(--petal);color:var(--berry);padding:6px 16px;border-radius:999px;font-weight:700;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card .ico{font-size:2rem;margin-bottom:8px;display:block}
+.card h3{color:var(--berry);margin-bottom:6px}
+.card .year{display:inline-block;background:var(--blush);color:var(--rose);font-weight:700;font-size:.85rem;padding:2px 12px;border-radius:999px;margin-bottom:8px}
+
+/* Timeline */
+.timeline{max-width:720px;margin:auto;position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:4px;border-radius:4px;background:linear-gradient(var(--pink),var(--petal))}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-item::before{content:"";position:absolute;left:-33px;top:26px;width:20px;height:20px;border-radius:50%;background:var(--white);border:5px solid var(--rose)}
+
+/* Skills */
+.skill{margin-bottom:18px}
+.skill .row{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+.bar{height:14px;background:var(--petal);border-radius:999px;overflow:hidden}
+.fillbar{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--rose));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+
+/* Certificates */
+.cert{padding:0;overflow:hidden}
+.cert .thumb{aspect-ratio:4/3;background:var(--petal);display:grid;place-items:center;font-size:3rem;overflow:hidden}
+.cert .thumb img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.cert:hover .thumb img{transform:scale(1.08)}
+.cert .info{padding:18px 22px 22px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.contact-card{display:flex;gap:14px;align-items:center;padding:18px 22px}
+.contact-card .ico{margin:0;width:52px;height:52px;border-radius:50%;background:var(--petal);display:grid;place-items:center;font-size:1.5rem;flex:none}
+.contact-card b{display:block;color:var(--berry);font-family:'Fredoka'}
+.contact-card span{color:var(--soft);font-size:.95rem;word-break:break-word}
+
+footer{margin-top:80px;text-align:center;padding:30px 6%;background:var(--blush);color:var(--soft)}
+footer b{color:var(--rose)}
+
+/* Scroll reveal (single, restrained) */
+.reveal{opacity:0;transform:translateY(26px) scale(.98);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+
+/* Cursor sparkle */
+.spark{position:fixed;pointer-events:none;z-index:200;font-size:14px;animation:pop .8s forwards}
+@keyframes pop{to{transform:translateY(-30px) scale(.2);opacity:0}}
+
+/* ---------- Responsive ---------- */
+@media(max-width:820px){
+  .burger{display:block}
+  .menu{position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--white);border:2px solid var(--petal);border-radius:24px;padding:12px;box-shadow:var(--shadow);display:none}
+  .menu.open{display:flex}
+  .menu a{text-align:center}
+  .s3{left:-10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .petals{display:none}
+}
+</style>
 </head>
 <body>
-  <header>
-    <img src="foto.jpeg" alt="Foto Risa" class="foto">
-    <h1>Risa Ariarel</h1>
-    <p>Mahasiswa Teknik Komputer</p>
-  </header>
 
-  <section id="tentang">
-    <h2>Tentang Saya</h2>
-    <p>Halo, saya Risa dari Situbondo, mahasiswa semester 1 Teknik Komputer. Saya suka belajar pemrograman dan bermain bulu tangkis.</p>
-  </section>
+<div id="loader"><div class="loader-box"><div class="loader-heart">💖</div><p>Sebentar ya, portofolio Risa lagi dimuat...</p></div></div>
+<div class="hero-bg"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
 
-  <section id="proyek">
-    <h2>Proyek</h2>
-    <ul>
-      <li>LED berkedip dengan Arduino IDE dan Wemos D1 Mini</li>
-      <li>Sensor DHT11 dan aktuator (LED, buzzer, tombol)</li>
-      <li>Aplikasi GUI kontrol sensor dengan Qt Creator</li>
-    </ul>
-  </section>
+<nav>
+  <a href="#beranda" class="logo">Risa<span>🌸</span></a>
+  <button class="burger" id="burger" aria-label="Buka menu">☰</button>
+  <ul class="menu" id="menu">
+    <li><a href="#beranda" class="active">Beranda</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#pendidikan">Pendidikan</a></li>
+    <li><a href="#pengalaman">Pengalaman</a></li>
+    <li><a href="#organisasi">Organisasi</a></li>
+    <li><a href="#keahlian">Keahlian</a></li>
+    <li><a href="#sertifikat">Sertifikat</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</nav>
 
-  <section id="kontak">
-    <h2>Kontak</h2>
-    <p>Email: risasaja0806@gmail.com</p>
-    <p>Instagram: @risa.relkorel</p>
-  </section>
+<!-- BERANDA -->
+<section id="beranda">
+  <div class="photo-wrap">
+    <!-- Ganti foto-risa.jpg dengan nama file fotomu -->
+    <img class="photo" src="foto-risa.jpg" alt="Foto Risa Ariarel" onerror="this.outerHTML='<div class=&quot;photo&quot;>R</div>'">
+    <span class="sticker s1">🌸</span><span class="sticker s2">💗</span><span class="sticker s3">✨</span>
+  </div>
+  <span class="hello">Halo, salam kenal! 👋</span>
+  <h1>Aku <span class="name">Risa Ariarel</span></h1>
+  <p class="typed" id="typed"></p>
+  <div class="btns">
+    <a href="#tentang" class="btn fill">Kenalan Yuk</a>
+    <a href="#kontak" class="btn line">Hubungi Aku</a>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+  <div class="title reveal"><h2>Tentang Saya</h2><span class="squiggle"></span></div>
+  <div class="card about reveal">
+    <p>Saya Risa Ariarel, mahasiswa Politeknik Negeri Jember semester 1 Teknik Komputer. Saya suka belajar pemrograman dan bermain bulu tangkis.</p>
+    <div class="chips"><span class="chip">💻 Pemrograman</span><span class="chip">🏸 Bulu Tangkis</span><span class="chip">🎓 Teknik Komputer</span></div>
+  </div>
+</section>
+
+<!-- PENDIDIKAN -->
+<section id="pendidikan">
+  <div class="title reveal"><h2>Latar Belakang Pendidikan</h2><span class="squiggle"></span></div>
+  <div class="timeline">
+    <div class="card tl-item reveal"><span class="year">2014 – 2020</span><h3>SDN 3 Buduan</h3></div>
+    <div class="card tl-item reveal"><span class="year">2020 – 2023</span><h3>SMPN 1 Suboh</h3></div>
+    <div class="card tl-item reveal"><span class="year">2023 – 2026</span><h3>SMKN 1 Suboh</h3></div>
+    <div class="card tl-item reveal"><span class="year">2026 – sekarang</span><h3>Politeknik Negeri Jember</h3></div>
+  </div>
+</section>
+
+<!-- PENGALAMAN -->
+<section id="pengalaman">
+  <div class="title reveal"><h2>Pengalaman</h2><span class="squiggle"></span></div>
+  <div class="grid">
+    <div class="card reveal"><span class="ico">🏢</span><span class="year">2025 – 2026</span><h3>Praktik Kerja Lapangan</h3><p>PKL di PEMDA Kabupaten Situbondo.</p></div>
+    <div class="card reveal"><span class="ico">🎤</span><h3>Paduan Suara</h3><p>Ikut serta dalam paduan suara di SMKN 1 Suboh.</p></div>
+    <div class="card reveal"><span class="ico">📝</span><span class="year">2023 – 2026</span><h3>Sekretaris Kelas</h3><p>Menjadi sekretaris kelas selama di SMKN 1 Suboh.</p></div>
+  </div>
+</section>
+
+<!-- ORGANISASI -->
+<section id="organisasi">
+  <div class="title reveal"><h2>Organisasi</h2><span class="squiggle"></span></div>
+  <div class="grid">
+    <div class="card reveal"><span class="ico">⛺</span><h3>Pramuka</h3><p>Mengikuti organisasi Pramuka.</p></div>
+    <div class="card reveal"><span class="ico">🖥️</span><h3>Himpunan Mahasiswa Teknik Komputer</h3><p>Sekretaris Himatek.</p></div>
+  </div>
+</section>
+
+<!-- KEAHLIAN -->
+<section id="keahlian">
+  <div class="title reveal"><h2>Keahlian</h2><span class="squiggle"></span></div>
+  <div class="card reveal" style="max-width:700px;margin:auto">
+    <div class="skill"><div class="row"><span>📡 Mikrotik</span><span>80%</span></div><div class="bar"><div class="fillbar" data-w="80"></div></div></div>
+    <div class="skill"><div class="row"><span>🏸 Olahraga (Bulu Tangkis)</span><span>90%</span></div><div class="bar"><div class="fillbar" data-w="90"></div></div></div>
+  </div>
+</section>
+
+<!-- SERTIFIKAT -->
+<section id="sertifikat">
+  <div class="title reveal"><h2>Sertifikat</h2><p>Ganti gambar dengan file sertifikatmu</p><span class="squiggle"></span></div>
+  <div class="grid">
+    <div class="card cert reveal"><div class="thumb"><img src="sertifikat1.jpg" alt="Sertifikat 1" onerror="this.parentNode.textContent='🏅'"></div><div class="info"><h3>Sertifikat 1</h3><p>Tulis nama sertifikat di sini.</p></div></div>
+    <div class="card cert reveal"><div class="thumb"><img src="sertifikat2.jpg" alt="Sertifikat 2" onerror="this.parentNode.textContent='🎖️'"></div><div class="info"><h3>Sertifikat 2</h3><p>Tulis nama sertifikat di sini.</p></div></div>
+    <div class="card cert reveal"><div class="thumb"><img src="sertifikat3.jpg" alt="Sertifikat 3" onerror="this.parentNode.textContent='🏆'"></div><div class="info"><h3>Sertifikat 3</h3><p>Tulis nama sertifikat di sini.</p></div></div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="title reveal"><h2>Kontak</h2><p>Mau berkolaborasi atau sekadar menyapa? Hubungi aku ya!</p><span class="squiggle"></span></div>
+  <div class="contact-grid">
+    <a class="card contact-card reveal" href="https://wa.me/6289523956437" target="_blank" rel="noopener"><span class="ico">💬</span><div><b>WhatsApp</b><span>089523956437</span></div></a>
+    <a class="card contact-card reveal" href="https://www.instagram.com/risa.relkorel" target="_blank" rel="noopener"><span class="ico">📸</span><div><b>Instagram</b><span>risa.relkorel</span></div></a>
+    <a class="card contact-card reveal" href="https://www.tiktok.com/@risaariarel" target="_blank" rel="noopener"><span class="ico">🎵</span><div><b>TikTok</b><span>risaariarel</span></div></a>
+    <a class="card contact-card reveal" href="mailto:risasaja0806@gmail.com"><span class="ico">✉️</span><div><b>Email</b><span>risasaja0806@gmail.com</span></div></a>
+    <div class="card contact-card reveal"><span class="ico">📍</span><div><b>Alamat</b><span>Jawa Timur, Kab. Situbondo</span></div></div>
+  </div>
+</section>
+
+<footer>© 2026 <b>Risa Ariarel</b>. Dibuat dengan 💖 di Indonesia</footer>
+
+<script>
+/* Loader */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),700));
+
+/* Menu mobile */
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('open'));
+
+/* Efek ketik */
+const words=['Mahasiswa Teknik Komputer 💻','Politeknik Negeri Jember 🎓','Suka Bulu Tangkis 🏸'];
+let w=0,c=0,del=false;const el=document.getElementById('typed');
+(function type(){
+  const t=words[w];
+  el.textContent=t.slice(0,c);
+  if(!del&&c<t.length){c++;setTimeout(type,90)}
+  else if(!del){del=true;setTimeout(type,1400)}
+  else if(c>0){c--;setTimeout(type,45)}
+  else{del=false;w=(w+1)%words.length;setTimeout(type,300)}
+})();
+
+/* Kelopak jatuh */
+const pet=document.getElementById('petals'),icons=['🌸','💗','🌷','✨'];
+for(let i=0;i<14;i++){
+  const s=document.createElement('span');s.className='petal';
+  s.textContent=icons[i%icons.length];
+  s.style.left=Math.random()*100+'%';
+  s.style.fontSize=(12+Math.random()*14)+'px';
+  s.style.animationDuration=(9+Math.random()*10)+'s';
+  s.style.animationDelay=(-Math.random()*15)+'s';
+  pet.appendChild(s);
+}
+
+/* Scroll reveal + bar keahlian */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    e.target.querySelectorAll('.fillbar').forEach(b=>b.style.width=b.dataset.w+'%');
+    io.unobserve(e.target);
+  }
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach((r,i)=>{r.style.transitionDelay=(i%3)*.08+'s';io.observe(r)});
+
+/* Menu aktif saat scroll */
+const links=[...document.querySelectorAll('.menu a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section').forEach(s=>so.observe(s));
+
+/* Kilau kursor */
+let last=0;
+addEventListener('pointermove',e=>{
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||e.pointerType==='touch')return;
+  const n=Date.now();if(n-last<90)return;last=n;
+  const s=document.createElement('span');s.className='spark';s.textContent='✨';
+  s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),800);
+});
+</script>
 </body>
 </html>
